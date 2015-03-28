@@ -1,8 +1,15 @@
 ### Shiny app for Functional Generalized Additive Models
 ----------------
 Functional Generalized Additive Models are a class of models we developed for flexible scalar on function regression.  The
-approach is demonstrated here on a number of data sets using a [Shiny](http://shiny.rstudio.com/) app.  The app can be viewed 
-[here](https://fgam.shinyapps.io/fgam/).
+approach is demonstrated here on a number of data sets using a [Shiny](http://shiny.rstudio.com/) app.  
+
+The app can be viewed [here](https://fgam.shinyapps.io/fgam/).
+
+You can also run the app locally with R using
+```
+library(shiny)
+runGitHub("mwmclean/fgam-app")
+```
 
 For more information on Functional Generalized Additive Models, see 
 
