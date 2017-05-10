@@ -26,7 +26,7 @@ shinyUI(pageWithSidebar(
       tags$script(type = "text/javascript", src = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"),
       tags$script( "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});", type='text/x-mathjax-config')
     ),
-    HTML("<div style = 'padding-bottom: 10px;'>For an introduction to the FLM and FGAM, see the Research tab on my <a href='http://www.stat.tamu.edu/~mmclean/'>website</a> or the paper <a href='http://www.tandfonline.com/doi/abs/10.1080/10618600.2012.729985'>here</a>.</div>"),
+    HTML("<div style = 'padding-bottom: 10px;'>For an introduction to the FLM and FGAM, see the Research tab on my <a href='http://mwmclean.github.io/'>website</a> or the paper <a href='http://www.tandfonline.com/doi/abs/10.1080/10618600.2012.729985'>here</a>.</div>"),
     helpText(strong('Please send questions to:')),
     includeHTML('myemail.html'),
     h4(''),
