@@ -3,7 +3,7 @@
 Functional Generalized Additive Models are a class of models we developed for flexible scalar on function regression.  The
 approach is demonstrated here on a number of data sets using a [Shiny](http://shiny.rstudio.com/) app.  
 
-The app can be viewed [here](https://fgam.shinyapps.io/fgam/).
+The app can be viewed [here](http://fgam.shinyapps.io/fgam).
 
 You can also run the app locally with R using
 ```
