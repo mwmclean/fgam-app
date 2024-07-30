@@ -23,16 +23,32 @@ shinyUI(pageWithSidebar(
       tags$style(type='text/css', ".span4 { max-width: 310px; }"),
       #includeScript("mathjaxFix.js", type="text/x-mathjax-config"),
       #includeScript("mathjax/MathJax.js")
-      tags$script(type = "text/javascript", src = "https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"),
-      tags$script( "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});", type='text/x-mathjax-config')
+      #tags$script( "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},processEscapes:true,'HTML-CSS':{fonts:['TeX']}});", type='text/x-mathjax-config'),
+      #tags$script(type = "text/javascript", src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js")
+      tags$link(rel="stylesheet",
+                href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css",
+                integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ",
+                crossorigin="anonymous"),
+      HTML('<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>'),
+      HTML('<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>'),
+      HTML('
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        renderMathInElement(document.body, {
+          delimiters: [{left: "$", right: "$", display: false}]
+        });
+      })
+    </script>')
     ),
-    HTML("<div style = 'padding-bottom: 10px;'>For an introduction to the FLM and FGAM, see the Research tab on my <a href='http://mwmclean.github.io/'>website</a> or the paper <a href='http://www.tandfonline.com/doi/abs/10.1080/10618600.2012.729985'>here</a>.</div>"),
+    HTML(paste0("<div style = 'padding-bottom: 10px;'>For an introduction to the FLM and FGAM, ",
+    " see the Research tab on my <a href='https://www.mwmclean.github.io/'>website</a> ",
+    "or the paper <a href='https://www.tandfonline.com/doi/abs/10.1080/10618600.2012.729985'>here</a>.</div>")),
     helpText(strong('Please send questions to:')),
     includeHTML('myemail.html'),
     h4(''),
-    selectInput("dataset", "Choose a dataset:", 
+    selectInput("dataset", "Choose a dataset:",
                 choices = c("Emissions", "DTI", "Tecator", "Temperature", "Precipitation")),
-    
+
     #    numericInput("obs", "Number of obs. to highlight:", 8, min = 3, max = 12, step = 1),
     div(class='row',
         div(class="shiny-bound-input offset1", numericInput("obs", "Number of obs. to highlight:", 8, min = 3, max = 12, step = 1))
