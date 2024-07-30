@@ -119,19 +119,19 @@ shinyUI(pageWithSidebar(
     #                      numericInput('phi','phi:', 30),
     #                      helpPopup('About', 'These define the viewing angles for the perspective plot (azimuth and coaltitude, respectively)',
     #                                            placement=c('right', 'top', 'left', 'bottom'),
-    #                                            trigger='hover')), 
+    #                                            trigger='hover')),
     conditionalPanel(condition = "input.plottype=='persp'&&input.fitaction",
                      div(class='row',
-                         div(class="span2 offset1", numericInput('theta','theta:', value=10, step=5)),
+                         div(class="span2 offset1", numericInput('theta','Horizontal view angle:', value=10, step=5)),
                              #title = "These define the viewing angles for the perspective plot (azimuth and coaltitude, respectively)"),
-                         div(class="span2", numericInput('phi','phi:', value=30, step=5),
+                         div(class="span2", numericInput('phi','Vertical view angle:', value=30, step=5),
                              #title = "These define the viewing angles for the perspective plot (azimuth and coaltitude, respectively)")
                              helpPopup('About', 'These define the viewing angles for the perspective plot (azimuth and coaltitude, respectively)',
                                        placement='right', trigger='hover'))
                      ),
-                     tags$style(type="text/css", '#theta {width: 50px;}'),
-                     tags$style(type="text/css", '#phi {width: 50px;}')
-    ), 
+                     tags$style(type="text/css", '#theta {width: 75px;}'),
+                     tags$style(type="text/css", '#phi {width: 75px;}')
+    ),
     conditionalPanel(condition = "input.pred==1",
                      h4('Out-of-Sample Prediction Root Mean Square Error')),
     conditionalPanel(condition = "input.pred==1",
