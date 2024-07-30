@@ -3059,7 +3059,7 @@ TestBoot <- function(y,X,tvals=seq(0,1,l=ncol(X)), family=gaussian(),
   ###########################################################################################
   # 1)
   # fit full model NOT NOT NOT assuming sig2=sig3 (mA arg for test two)
-browser()
+
   Design <- t( apply(X,1,function(xvals){
     Zx <- eval.basis(xvals,bbx)%*%UDinvmat_x
     Bxi<-  cbind( 1+numeric(numT), xvals, xvals*tvals, #=Z_0
