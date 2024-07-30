@@ -139,7 +139,7 @@ shinyUI(pageWithSidebar(
     conditionalPanel(condition = "input.htest==1",
                      h4('Hypothesis Test of H_0: FLM vs H_1: FGAM')),
    conditionalPanel(condition = "input.htest==1",
-                    HTML("<div style = 'text-align: center; padding-bottom: 10px;'>For more information, see the paper on <a href = 'http://arxiv.org/abs/1310.5811' target='_blank'>arXiv</a></span></div>")),
+                    HTML("<div style = 'text-align: center; padding-bottom: 10px;'>For more information, see the paper in <a href = 'http://arxiv.org/abs/1310.5811' target='_blank'>Statistics and Computing</a></span></div>")),
     conditionalPanel(condition = "input.htest==1",
                      verbatimTextOutput("testres"))
   )
