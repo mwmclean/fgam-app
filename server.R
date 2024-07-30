@@ -203,21 +203,21 @@ shinyServer(function(input, output, session) {
       fit
     })
   })
-  
+
   output$FLMplot <- renderPlot({
-    if (is.null(fit <- fitFLM())){
+    if (is.null(fit <- fitFLM()())){
       par(mar = c(0,0,0,0))
       plot(c(0, 1), c(0, 1), ann = F, bty = 'n', type = 'n', xaxt = 'n', yaxt = 'n')
-      text(x = 0.5, y = 0.5, "Calculating...", 
+      text(x = 0.5, y = 0.5, "Calculating...",
            cex = 1.6, col = "black")
     }else{
 #    input$fitaction
-     
+
         #observe({print('FLMfit')})
         plot.gam(fit, rug=FALSE, main=expression(hat(beta)(t)), xlab='t', ylab='')
     }
   })
-  
+
   fitFGAM <- reactive(function(){
                       if (!input$fitaction)
                         return(NULL)
@@ -273,36 +273,36 @@ shinyServer(function(input, output, session) {
                     })
 
   output$FGAMplot <- renderPlot({
-    if (is.null(fit <- fitFGAM())){
+    if (is.null(fit <- fitFGAM()())){
       par(mar = c(0,0,0,0))
       plot(c(0, 1), c(0, 1), ann = F, bty = 'n', type = 'n', xaxt = 'n', yaxt = 'n')
-      text(x = 0.5, y = 0.5, "Calculating...", 
+      text(x = 0.5, y = 0.5, "Calculating...",
            cex = 1.6, col = "black")
     }else{
-      
+
       phi <- ifelse(is.null(input$phi), 30, input$phi)
       theta <- ifelse(is.null(input$phi), 10, input$theta)
-      
+
       switch(input$plottype,
-             'persp'=vis.gam(fit, plot.type=input$plottype, phi=phi, theta=theta, ticktype='detailed', 
+             'persp'=vis.gam(fit, plot.type=input$plottype, phi=phi, theta=theta, ticktype='detailed',
                              main = expression(hat(F)(x,t)), zlab='', xlab='x', ylab='t'),
              'contour'=vis.gam(fit, plot.type=input$plottype, main = expression(hat(F)(x,t)),
                                xlab='x', ylab='t'))
-      
-      #vis.gam(fit, plot.type=input$plottype, main = expression(hat(F)(x,t), xlab='x', ylab='t'))    
+
+      #vis.gam(fit, plot.type=input$plottype, main = expression(hat(F)(x,t), xlab='x', ylab='t'))
       #plot(k,sp,main=class(sp))
     }
   })
-  
+
   output$prederror <- renderPrint({
     input$fitaction
-    fit.flm <- fitFLM()
-    fit.fgam <- fitFGAM()
+    fit.flm <- fitFLM()()
+    fit.fgam <- fitFGAM()()
     isolate({
       if(!input$pred || is.null(input$n.testing) || !input$fitaction)
         return(cat('Select number of test samples and click the \'Fit Models\' button'))
       #cat(input$n.testing)
-      
+
       dat <- list()
       dat$X <- datasetInput()
       min.X <- min(dat$X)
