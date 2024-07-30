@@ -8,9 +8,9 @@ shinyUI(pageWithSidebar(
   headerPanel("Comparison of Functional Regression Models"),
   # tags$head(tags$link(rel="stylesheet", type="text/css", href="mysidepanel.css")),
   # Sidebar with controls to select a dataset and specify the number
-  # of observations to view. The helpText function is also used to 
-  # include clarifying text. Most notably, the inclusion of a 
-  # submitButton defers the rendering of output until the user 
+  # of observations to view. The helpText function is also used to
+  # include clarifying text. Most notably, the inclusion of a
+  # submitButton defers the rendering of output until the user
   # explicitly clicks the button (rather than doing it immediately
   # when inputs change). This is useful if the computations required
   # to render output are inordinately time-consuming.
@@ -44,7 +44,7 @@ shinyUI(pageWithSidebar(
     #              "on the full dataset."),
     helpText(strong('FLM Paramaters')),
     sliderInput("FLMnbf", "Number of basis functions to use for functional coefficient:", value = 15, min = 5, max = 25, step = 1),
-    selectInput("sptypeFLM", "Method for Estimating Smoothing Parameters:", 
+    selectInput("sptypeFLM", "Method for Estimating Smoothing Parameters:",
                 choices = c("REML", "GCV", "Fixed")),
     conditionalPanel(condition = "input.sptypeFLM == 'Fixed'",
                      sliderInput("FLMsp", "base-10 log smoothing parameter for coefficient function", value = 1, min = -5, max = 10, step = 1,
@@ -54,7 +54,7 @@ shinyUI(pageWithSidebar(
     uiOutput('tbfs'),
     #     sliderInput("FGAMxnbf", "Number of basis functions to use for x-axis basis for FGAM:", value = 10, min = 5, max = 10, step = 1),
     #     sliderInput("FGAMtnbf", "Number of basis functions to use for t-axis basis for FGAM:", value = 10, min = 5, max = 10, step = 1),
-    selectInput("sptypeFGAM", "Method for Estimating Smoothing Parameters:", 
+    selectInput("sptypeFGAM", "Method for Estimating Smoothing Parameters:",
                 choices = c("REML", "GCV", "Fixed")),
     conditionalPanel(condition = "input.sptypeFGAM == 'Fixed'",
                      sliderInput("FGAMxsp", "base-10 log smoothing parameter x-axis", value = 1, min = -5, max = 10, step = 1),
@@ -64,7 +64,7 @@ shinyUI(pageWithSidebar(
     #     radioButtons("pred", "Perform out of sample prediction?",
     #                  c('Yes', 'No'), selected='No'),
     checkboxInput("pred", "Perform out of sample prediction?", FALSE),
-    
+
     uiOutput('n.test'),
     checkboxInput("htest", "Conduct hypothesis test?", FALSE),
     conditionalPanel(condition = "input.htest==1",
@@ -77,7 +77,7 @@ shinyUI(pageWithSidebar(
     #             "on the full dataset.")),
     actionButton('fitaction', "Fit Models")
   ),
-  
+
   # Show a summary of the dataset and an HTML table with the requested
   # number of observations. Note the use of the h4 function to provide
   # an additional header above each output section.
@@ -93,6 +93,7 @@ shinyUI(pageWithSidebar(
     conditionalPanel(condition = "input.fitaction", plotOutput('FLMplot')),
     conditionalPanel(condition = "!input.fitaction", HTML("<br //>")),
     h4("Functional Generalized Additive Model: $E(Y|X) = \\beta_0 + \\int F(X(t),t)dt$"),
+
     conditionalPanel(condition = "!input.fitaction", p(paste0("Choose Inputs on the left and then click 'Fit Models' ",
                                                               "to fit the FLM and FGAM using penalized splines."),
                                                        id = "Instructions")),
